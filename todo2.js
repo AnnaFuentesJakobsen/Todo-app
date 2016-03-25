@@ -1,21 +1,29 @@
 
-var todoList = document.getElementById("todoListBody");
+// Get Lists and input
 var input = document.getElementById("textfield");
-
+var todoList = document.getElementById("todoListBody");
 var finishedList = document.getElementById("finishedListBody");
 
-// Get Buttons:
-
+// Get Buttons
 var addButton = document.getElementById("addItem");
 
+// --- FUNCTIONS ---
 
-// Add item:
+// Change item
+function changeItem(){
+	this.previousSibling.previousSibling.contentEditable = true;
+	this.previousSibling.previousSibling.focus();
+}
 
+// Remove item
+function removeItem(){
+		this.parentNode.parentNode.removeChild(this.parentNode);
+}
+
+// Add item
 addButton.addEventListener("click", addItem);
 
-function addItem(e){
-	console.log(e);
-
+function addItem(){
 
 	if(input.value){
 		var div = document.createElement("DIV");
@@ -36,7 +44,7 @@ function addItem(e){
 
 		// --- BUTTONS ---
 
-		// Marked as Done:
+		// Finished
 		var doneBtn = document.createElement("BUTTON");
 		var doneText = document.createTextNode("Done");
 
@@ -67,61 +75,34 @@ function addItem(e){
 
 				// Add remove-button:
 				var removeBtn = document.createElement("BUTTON");
-				var removeText = document.createTextNode("Remove Item");
+				var removeText = document.createTextNode("Remove");
 				
 				removeBtn.appendChild(removeText);
-				createTr.appendChild(removeBtn);
+				createTd.appendChild(removeBtn);
 
 				removeBtn.addEventListener("click", removeItem);
 
 				// Remove buttons from todo-list:
 				todoList.removeChild(tr);
-
 			}
 
-		// Change:
+		// Change-button:
 		var changeBtn = document.createElement("BUTTON");
-		var changeText = document.createTextNode("Change Item");
+		var changeText = document.createTextNode("Change");
 
 		changeBtn.appendChild(changeText);
 		td.appendChild(changeBtn);
 
-		//console.log(changeBtn.previousSibling.previousSibling.innerHTML);
-
 		changeBtn.addEventListener("click", changeItem);
 
-		// Remove:
+		// Remove-button:
 		var removeBtn = document.createElement("BUTTON");
-		var removeText = document.createTextNode("Remove Item");
+		var removeText = document.createTextNode("Remove");
 
 		removeBtn.appendChild(removeText);
 		td.appendChild(removeBtn);
 
 		removeBtn.addEventListener("click", removeItem);
 		
-
 	}
 }
-// Finished Task:
-
-
-// Change item:
-
-function changeItem(){
-
-	this.previousSibling.previousSibling.contentEditable = true;
-	console.log(this.previousSibling.previousSibling.innerHTML);
-	this.previousSibling.previousSibling.focus();
-}
-
-// Remove item:
-
-function removeItem(){
-
-		this.parentNode.parentNode.removeChild(this.parentNode);
-		
-}
-
-
-
-
