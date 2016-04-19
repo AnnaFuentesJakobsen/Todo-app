@@ -1,9 +1,14 @@
+
 .btn, button {
 	background-color: #9575cd;
 }
 
 .btn:hover, button:hover {
 	background-color: #673ab7;
+}
+
+doneBtn {
+	background-color: green;
 }
 
 button {
@@ -33,3 +38,4 @@ td div {
 #finishedListBody button {
 	margin-left: 20px;
 }
+
